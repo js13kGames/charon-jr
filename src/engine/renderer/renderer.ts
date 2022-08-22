@@ -64,7 +64,7 @@ export class Renderer {
       gl.uniformMatrix4fv(this.viewDirectionProjectionInverseLocation, false, inverseViewProjection.toFloat32Array());
       gl.bindVertexArray(skybox.vao);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-    }
+    };
 
     const renderMesh = (mesh: Mesh) => {
       gl.useProgram(lilgl.program);
@@ -82,7 +82,7 @@ export class Renderer {
       gl.uniformMatrix4fv(this.modelviewProjectionLocation, false, modelViewProjectionMatrix.toFloat32Array());
       gl.bindVertexArray(mesh.geometry.vao!);
       gl.drawElements(gl.TRIANGLES, mesh.geometry.getIndices()!.length, gl.UNSIGNED_SHORT, 0);
-    }
+    };
 
     textureLoader.updateAnimatedTextures();
 

@@ -15,7 +15,7 @@ export class Scene extends Object3d {
         object3d.geometry.bindGeometry();
         object3d.material.isTransparent ? this.transparentMeshes.push(object3d) : this.solidMeshes.push(object3d);
       }
-    })
+    });
   }
 
   remove(object3d: Object3d) {

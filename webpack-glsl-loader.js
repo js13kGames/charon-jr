@@ -11,7 +11,7 @@ function parse(loader, source, context, cb) {
     imports.push({
       key: match[1],
       target: match[0],
-      content: ''
+      content: '',
     });
     match = importPattern.exec(source);
   }
@@ -25,7 +25,7 @@ function processImports(loader, source, context, imports, cb) {
     const firstLineIndex = source.indexOf('\n');
     const [versionLine, code] = [source.slice(0, firstLineIndex), source.slice(firstLineIndex)];
     const newlineStripped = code.replaceAll('\r', '').replaceAll('\n', '');
-    const extraSpacesStripped = newlineStripped.replace(/\s\s+/g, ' ')
+    const extraSpacesStripped = newlineStripped.replace(/\s\s+/g, ' ');
 
     const combinedBack = versionLine + '\n' + extraSpacesStripped;
 

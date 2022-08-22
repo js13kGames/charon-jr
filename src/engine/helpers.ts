@@ -33,10 +33,14 @@ export function range(start: number, end: number, interval = 1) {
   return new Array(Math.ceil((end - start)/interval)).fill().map(_ => lastValue += interval);
 }
 
-export function moveValueTowardsTarget(currentValue: number, maxValue: number, step: number) {
-  const isIncrease = maxValue >= currentValue;
-  if (isIncrease) {
-    return Math.min(currentValue + step, maxValue);
+export function moveValueTowardsTarget(currentValue: number, targetValue: number, step: number) {
+  const difference = currentValue - targetValue;
+  if (difference < 0.001 && difference > -0.001) {
+    return targetValue;
   }
-  return Math.max(currentValue - step, maxValue);
+  const isIncrease = targetValue >= currentValue;
+  if (isIncrease) {
+    return Math.min(currentValue + step, targetValue);
+  }
+  return Math.max(currentValue - step, targetValue);
 }

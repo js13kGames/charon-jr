@@ -9,11 +9,11 @@ module.exports = {
   devServer: {
     static: './dist',
     hot: true,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
     }),
   ],
   module: {
@@ -31,7 +31,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

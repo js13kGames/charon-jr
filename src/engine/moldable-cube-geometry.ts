@@ -78,7 +78,7 @@ export class MoldableCubeGeometry extends BufferGeometry {
       }
 
       vertexCount += (gridX1 * gridY1);
-    }
+    };
 
     const sides = [
       ['x', 'z', 'y', 1, 1, width, depth, height, widthSegments, depthSegments], // top
@@ -87,7 +87,7 @@ export class MoldableCubeGeometry extends BufferGeometry {
       ['z', 'y', 'x', 1, -1, depth, height, -width, depthSegments, heightSegments], // right
       ['x', 'y', 'z', 1, -1, width, height, depth, widthSegments, heightSegments], // front
       ['x', 'y', 'z', -1, -1, width, height, -depth, widthSegments, heightSegments], // back
-    ]
+    ];
 
     doTimes(sidesToDraw, index => {
       // @ts-ignore
@@ -337,7 +337,7 @@ export class MoldableCubeGeometry extends BufferGeometry {
       const point3Index = this.verticesToActOn.indexOf(point3);
 
       if (point1Index !== -1 && point2Index !== -1 && point3Index !== -1) {
-        indicesInSelection.push(point1Index, point2Index, point3Index)
+        indicesInSelection.push(point1Index, point2Index, point3Index);
       }
     }
 

@@ -24,10 +24,10 @@ export class Player {
   mesh: Mesh;
 
   constructor() {
-    textureLoader.load(drawVolcanicRock())
+    textureLoader.load(drawVolcanicRock());
     this.mesh = new Mesh(
       new MoldableCubeGeometry(0.3, 1, 0.3),
-      new Material({color: '#f0f'})
+      new Material({color: '#f0f'}),
     );
     const positions = this.mesh.geometry.getAttribute(AttributeLocation.Positions).data;
     positions[1] = 0;

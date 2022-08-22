@@ -72,11 +72,11 @@ class NoiseMaker {
 
       const poly = difference.modifyComponents(component => step(Math.abs(component)));
       return poly.x * poly.y * poly.z * grad;
-    }
+    };
 
     const ints = new EnhancedDOMPoint();
     const gridPos = new EnhancedDOMPoint();
-    ints.set(pixelPosition).modifyComponents(Math.trunc)
+    ints.set(pixelPosition).modifyComponents(Math.trunc);
 
     let total = 0;
     doTimes(2, z => {
@@ -84,8 +84,8 @@ class NoiseMaker {
         doTimes(2, x => {
           gridPos.set(ints.x + x, ints.y + y, ints.z + z);
           total += surflet(gridPos);
-        })
-      })
+        });
+      });
     });
     return total;
   }

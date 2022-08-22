@@ -21,10 +21,10 @@ export class ThirdPersonPlayer {
   idealLookAt = new EnhancedDOMPoint(0, 2, 0);
 
   constructor(camera: Camera) {
-    textureLoader.load(drawVolcanicRock())
+    textureLoader.load(drawVolcanicRock());
     this.mesh = new Mesh(
       new MoldableCubeGeometry(0.3, 1, 0.3),
-      new Material({color: '#f0f'})
+      new Material({color: '#f0f'}),
     );
     this.feetCenter.y = 10;
     this.camera = camera;

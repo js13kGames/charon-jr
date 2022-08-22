@@ -71,13 +71,13 @@ class SuperMinifyPlugin {
             if (filename !== this.options.htmlBundleName && filename !== this.options.jsBundleName) {
               compilation.emitAsset(`super-minified/${filename}`, rawSource);
             }
-          })
+          });
           compilation.emitAsset(
             'super-minified/index.html',
-            new RawSource(htmlJs)
+            new RawSource(htmlJs),
           );
           callback();
-        }
+        },
       );
     });
   }
@@ -122,7 +122,7 @@ async function applyClosure(js) {
 
       console.warn(stdErr); // If we make it here, there were warnings but no errors
     });
-  })
+  });
 }
 
 module.exports = { SuperMinifyPlugin };

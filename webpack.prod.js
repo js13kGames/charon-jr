@@ -9,7 +9,7 @@ module.exports = {
   mode: 'production',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
     }),
     new SuperMinifyPlugin(),
   ],
@@ -24,7 +24,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

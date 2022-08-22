@@ -13,7 +13,7 @@ export class Camera extends Object3d {
       f / aspect, 0, 0, 0,
       0, f, 0, 0,
       0, 0, (near + far) * rangeInv, -1,
-      0, 0, near * far * rangeInv * 2, 0
+      0, 0, near * far * rangeInv * 2, 0,
     ]);
   }
 }

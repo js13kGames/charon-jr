@@ -32,7 +32,7 @@ export class Object3d {
       }
       object3d.parent = this;
       this.children.push(object3d);
-    })
+    });
   }
 
   remove(object3d: Object3d) {
@@ -88,9 +88,9 @@ export class Object3d {
     copy.localMatrix = this.localMatrix.scale(1, 1, 1); // copy matrix by just scaling by 1
     copy.worldMatrix = this.worldMatrix.scale(1, 1, 1); // copy matrix by just scaling by 1
     copy.up = new EnhancedDOMPoint().set(this.up);
-    copy.rotationMatrix = this.rotationMatrix.scale(1, 1, 1) // copy matrix by just scaling by 1
+    copy.rotationMatrix = this.rotationMatrix.scale(1, 1, 1); // copy matrix by just scaling by 1
 
-    this.children.forEach(child => copy.add(child.clone()))
+    this.children.forEach(child => copy.add(child.clone()));
 
     return copy;
   }

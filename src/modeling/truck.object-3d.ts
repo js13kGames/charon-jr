@@ -83,7 +83,7 @@ export class TruckObject3d extends Object3d {
   frontWheels: Object3d;
   rearWheels: Object3d;
   chassis: Object3d;
-  wrapper: Object3d
+  wrapper: Object3d;
 
   constructor(frontWheels: Object3d, rearWheels: Object3d, chassis: Object3d) {
     super(new Object3d(frontWheels, rearWheels, chassis));
@@ -93,31 +93,39 @@ export class TruckObject3d extends Object3d {
     this.chassis = chassis;
   }
 
-  get leftFrontWheel() {
+  get frontLeftWheel() {
     return this.frontWheels.children[0];
   }
 
-  get rightFrontWheel() {
+  get frontRightWheel() {
     return this.frontWheels.children[1];
+  }
+
+  get rearLeftWheel() {
+    return this.rearWheels.children[0];
+  }
+
+  get rearRightWheel() {
+    return this.rearWheels.children[1];
   }
 
   get allWheels() {
     return [
       ...this.frontWheels.children,
       ...this.rearWheels.children,
-    ]
+    ];
   }
 
   setSteeringAngle(steeringAngleRadians: number) {
-    this.leftFrontWheel.setRotation(0, steeringAngleRadians, 0);
-    this.rightFrontWheel.setRotation(0, steeringAngleRadians, 0);
+    this.frontLeftWheel.setRotation(0, steeringAngleRadians, 0);
+    this.frontRightWheel.setRotation(0, steeringAngleRadians, 0);
   }
 
   private rotation = 0;
   setDriveRotationRate(rate: number) {
     this.rotation += rate;
-    this.leftFrontWheel.children[0].setRotation(this.rotation, 0, 0);
-    this.rightFrontWheel.children[0].setRotation(this.rotation, 0, 0);
+    this.frontLeftWheel.children[0].setRotation(this.rotation, 0, 0);
+    this.frontRightWheel.children[0].setRotation(this.rotation, 0, 0);
     this.rearWheels.setRotation(this.rotation, 0, 0);
   }
 }

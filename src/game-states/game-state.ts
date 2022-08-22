@@ -42,16 +42,16 @@ class GameState implements State {
     this.player = new ThirdPersonPlayer(camera);
     this.scene = new Scene();
     this.gridFaces = [[]];
-    const sampleHeightMap = noiseMaker.noiseLandscape(256, 1 / 64, 3, NoiseType.Perlin, 100)
+    const sampleHeightMap = noiseMaker.noiseLandscape(256, 1 / 64, 3, NoiseType.Perlin, 100);
 
     const floor = new Mesh(
       new PlaneGeometry(2047, 2047, 255, 255, sampleHeightMap),
-      materials.grass
+      materials.grass,
     );
 
     const lake = new Mesh(
       new PlaneGeometry(2047, 2047, 1, 1),
-      materials.lake
+      materials.lake,
     );
     lake.position.y = -47;
 
@@ -88,7 +88,7 @@ class GameState implements State {
         .scale(1, 1.5, 1)
         .noisify(2, 0.02)
         .computeNormalsCrossPlane()
-        .done()
+        .done();
 
       const leaves = new Mesh(foliageGeometry, materials.treeLeaves);
       leaves.position.y += 6;
@@ -186,7 +186,6 @@ class GameState implements State {
     // audio.loop = true;
     audio.connect(panner).connect(audioCtx.destination);
     // audio.start();
-
 
 
 // @ts-ignore

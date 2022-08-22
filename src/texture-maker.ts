@@ -64,8 +64,6 @@ export function drawWater() {
 }
 
 
-
-
 // *********************
 // Marble
 // *********************
@@ -77,7 +75,7 @@ export function drawMarble() {
   drawContext.drawImage(noiseContext.canvas, 0, 0, resolution, resolution);
   return mainImageData();
 }
-const marble = new Material({texture: textureLoader.load(drawMarble())})
+const marble = new Material({texture: textureLoader.load(drawMarble())});
 
 
 // *********************
@@ -151,7 +149,7 @@ export const materials = {
 
 export const skyboxes = {
   dayCloud: createSkybox(drawSky),
-}
+};
 
 
 export function drawCurrentTexture() {
@@ -184,13 +182,6 @@ export function drawLandscape() {
 }
 
 
-
-
-
-
-
-
-
 export function drawStoneWalkway() {
   clearWith('#5e6d81');
   noiseMaker.seed(34);
@@ -210,7 +201,6 @@ export function drawVolcanicRock() {
   drawContext.drawImage(noiseContext.canvas, 0, 0, resolution, resolution);
   return mainImageData();
 }
-
 
 
 function mainImageData() {

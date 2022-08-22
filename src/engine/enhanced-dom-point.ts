@@ -44,7 +44,7 @@ export class EnhancedDOMPoint extends DOMPoint {
   }
 
   subtract(otherVector: VectorLike) {
-   this.subtractVectors(this, otherVector);
+    this.subtractVectors(this, otherVector);
     return this;
   }
 
@@ -52,6 +52,12 @@ export class EnhancedDOMPoint extends DOMPoint {
     this.x = v1.x - v2.x;
     this.y = v1.y - v2.y;
     this.z = v1.z - v2.z;
+    return this;
+  }
+  average(otherVector: VectorLike) {
+    this.x = (this.x + otherVector.x) / 2;
+    this.y = (this.y + otherVector.y) / 2;
+    this.z = (this.z + otherVector.z) / 2;
     return this;
   }
 
@@ -64,9 +70,9 @@ export class EnhancedDOMPoint extends DOMPoint {
     const x = v1.y * v2.z - v1.z * v2.y;
     const y = v1.z * v2.x - v1.x * v2.z;
     const z = v1.x * v2.y - v1.y * v2.x;
-    this.x = x
-    this.y = y
-    this.z = z
+    this.x = x;
+    this.y = y;
+    this.z = z;
     return this;
   }
 

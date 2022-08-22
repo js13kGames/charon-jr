@@ -13,7 +13,7 @@ import {
   drawGrass,
   drawLandscape,
   drawMarble, drawParticle, drawSky,
-  drawStoneWalkway, drawVolcanicRock, drawWater
+  drawStoneWalkway, drawVolcanicRock, drawWater,
 } from '@/texture-maker';
 import { textureLoader } from '@/engine/renderer/texture-loader';
 import { controls } from '@/core/controls';
@@ -32,7 +32,6 @@ const debugElement = document.querySelector('#debug')!;
 // TESTING
 // drawCurrentTexture();
 // END TESTING
-
 
 
 createGameStateMachine(gameState);
