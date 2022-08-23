@@ -1,6 +1,6 @@
 import {
   fragment_shader_glsl, skybox_fragment_glsl, skybox_vertex_glsl,
-  vertex_shader_glsl,
+  instanced_vertex_glsl, vertex_shader_glsl
 } from '@/engine/shaders/shaders';
 
 export class LilGl {
@@ -8,6 +8,7 @@ export class LilGl {
   gl: WebGL2RenderingContext;
   program: WebGLProgram;
   skyboxProgram: WebGLProgram;
+  instancedProgram: WebGLProgram;
 
  constructor() {
    this.canvas = document.querySelector('#c')!;
@@ -20,6 +21,8 @@ export class LilGl {
    const skyboxVertex = this.createShader(this.gl.VERTEX_SHADER, skybox_vertex_glsl);
    const skyboxFragment = this.createShader(this.gl.FRAGMENT_SHADER, skybox_fragment_glsl);
    this.skyboxProgram = this.createProgram(skyboxVertex, skyboxFragment);
+   const instancedVertex = this.createShader(this.gl.VERTEX_SHADER, instanced_vertex_glsl);
+   this.instancedProgram = this.createProgram(instancedVertex, fragment);
  }
 
   createShader(type: GLenum, source: string): WebGLShader {
