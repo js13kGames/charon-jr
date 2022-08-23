@@ -219,28 +219,30 @@ export class ThirdPersonPlayer {
       }
 
       // drifting is initiated by a speed threshold. It also continues once started.
-      const shouldBeDrifting = this.speed > .6;
+      const shouldStartDrifting = this.speed > .8 && Math.abs(this.steeringAngle) > .65;
+      const shouldContinueDrifting = this.slipAngle !== 0;
+      const driftState = shouldStartDrifting || shouldContinueDrifting;
 
-      if (controlState === ControlState.Accelerating && shouldBeDrifting) {
+      if (controlState === ControlState.Accelerating && driftState) {
         // accel plus neutral steering input continues the slide as-is
         // this.steeringAngle moves to and from control direction. We want player input to directly impact drifting
         // regardless of where the animated wheels are pointed
         const inputAngle = controls.direction * -0.7;
         if (inputAngle !== 0) {
-          this.slipAngle = moveValueTowardsTarget(this.slipAngle, inputAngle * this.speed, .25);
+          this.slipAngle = moveValueTowardsTarget(this.slipAngle, inputAngle * this.speed, .01);
           // determine if in-steer or out-steer. insteer increases angle and out-steer decreases.
-          const isInsteer = Math.sign(controls.direction) === Math.sign(this.slipAngle);
+          const isInsteer = Math.sign(inputAngle) === Math.sign(this.slipAngle);
           if (isInsteer) {
             // insteer increases angle
-            this.slipAngle = moveValueTowardsTarget(this.slipAngle, inputAngle * this.speed, .05);
-          } else {
+            this.slipAngle = moveValueTowardsTarget(this.slipAngle, inputAngle * this.speed, .10);
+          } else if (Math.sign(inputAngle) !== 0) {
             // countersteer decreases angle
             this.slipAngle = moveValueTowardsTarget(this.slipAngle, 0, .05);
           }
         }
       } else {
         // accel off pulls slip angle back to 0
-        this.slipAngle = moveValueTowardsTarget(this.slipAngle, 0, .05);
+        this.slipAngle = moveValueTowardsTarget(this.slipAngle, 0, .025);
       }
 
 
@@ -265,6 +267,7 @@ export class ThirdPersonPlayer {
         Slip Angle: ${this.slipAngle}
         Angle: ${this.angle};
         controls: ${controls.direction * -0.7}
+        isInsteer: ${ Math.sign(controls.direction) === Math.sign(this.slipAngle)}
       `;
   }
 

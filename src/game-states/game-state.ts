@@ -58,18 +58,18 @@ class GameState implements State {
     );
     lake.position.y = -47;
 
-    const rampGeometry = new MoldableCubeGeometry(16, 40, 40);
-    rampGeometry
-      .selectBy(vertex => {
-        return vertex.y > 5 && vertex.z > 1;
-      })
-      .translate(0, -30)
-      .computeNormalsPerPlane()
-      .done();
-
-    const ramp = new Mesh(rampGeometry, materials.marble);
-    ramp.position.y += 8;
-    ramp.updateWorldMatrix();
+    // const rampGeometry = new MoldableCubeGeometry(16, 40, 40);
+    // rampGeometry
+    //   .selectBy(vertex => {
+    //     return vertex.y > 5 && vertex.z > 1;
+    //   })
+    //   .translate(0, -30)
+    //   .computeNormalsPerPlane()
+    //   .done();
+    //
+    // const ramp = new Mesh(rampGeometry, materials.marble);
+    // ramp.position.y += 8;
+    // ramp.updateWorldMatrix();
     // const testShapeGeometry = new MoldableCube(5, 2, 2, 4);
     //
     // testShapeGeometry.selectVertices(0, 1, 2, 3, 12, 17, 22, 27, 32, 37, 38, 43)
@@ -188,9 +188,9 @@ class GameState implements State {
     const treeLeaves = new InstancedMesh(leavesMesh.geometry, transforms2, count2, leavesMesh.material);
     // End Instanced drawing test add.
 
-    const levelParts = [ramp, floor, lake, instancedTest, instancedTest2, treeLeaves];
+    const levelParts = [floor, lake, instancedTest, instancedTest2, treeLeaves];
 
-    this.groupedFaces = getGroupedFaces([ramp, floor]);
+    this.groupedFaces = getGroupedFaces([floor]);
 
     function onlyUnique(value: any, index: number, array: any[]) {
       return array.indexOf(value) === index;
