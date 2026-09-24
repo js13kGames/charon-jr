@@ -1,4 +1,7 @@
 ---
+genres:
+  - racing
+  - arcade
 video: https://youtu.be/aIHlEQK_nR4
 post: https://roblouie.com/article/949/the-making-of-charon-jr-js13k-postmortem/
 # See github.com/js13kGames/hello-world for supported frontmatter
